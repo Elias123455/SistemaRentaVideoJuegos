@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Proyecto_RentaVideojuegos {
+namespace RentaVideojuegos {
     
     
     public partial class ViewSwitcher {

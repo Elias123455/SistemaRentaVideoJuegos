@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Proyecto_RentaVideojuegos.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="RentaVideojuegos.Global" Language="C#" %>
