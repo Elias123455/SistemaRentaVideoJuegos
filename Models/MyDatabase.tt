@@ -13,7 +13,7 @@
 
 	// Configuring schema load process
 	//
-//	GetSchemaOptions.GetProcedures = true;
+GetSchemaOptions.GetProcedures = true;
 
 	// Configuring generation process
 	//

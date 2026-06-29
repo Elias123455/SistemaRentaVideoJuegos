@@ -130,6 +130,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="GestionVideojuegos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="LinqToDB.Templates\CopyMe.SqlServer.tt.txt" />
     <Content Include="Models\MyDatabase.tt">
@@ -220,6 +221,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="GestionVideojuegos.aspx.cs">
+      <DependentUpon>GestionVideojuegos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionVideojuegos.aspx.designer.cs">
+      <DependentUpon>GestionVideojuegos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,6 +238,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StoredProceduresFix.cs" />
     <Compile Include="Models\Sucursal.cs" />
     <Compile Include="Models\Videojuego.cs" />
     <Compile Include="pages\Alquileres.aspx.cs">

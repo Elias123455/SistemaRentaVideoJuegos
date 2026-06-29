@@ -9,10 +9,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 using LinqToDB;
+using LinqToDB.Common;
 using LinqToDB.Configuration;
+using LinqToDB.Data;
 using LinqToDB.Mapping;
 
 namespace DataModels
@@ -209,6 +212,78 @@ namespace DataModels
 		/// </summary>
 		[Association(ThisKey=nameof(IdSucursal), OtherKey=nameof(DataModels.Sucursal.IdSucursal), CanBeNull=false)]
 		public Sucursal Sucursal { get; set; }
+
+		#endregion
+	}
+
+	public static partial class RentaVideojuegosDBStoredProcedures
+	{
+		#region SpActualizarVideojuego
+
+		public static int SpActualizarVideojuego(this RentaVideojuegosDB dataConnection, int? @idVideojuego, int? @idSucursal, string @titulo, string @descripcion, string @idCategoria, DateTime? @fechaLanzamiento, string @desarrolladora, string @distribuidora, string @imagen, string @trailer, char? @estado)
+		{
+			var parameters = new []
+			{
+				new DataParameter("@idVideojuego",     @idVideojuego,     LinqToDB.DataType.Int32),
+				new DataParameter("@idSucursal",       @idSucursal,       LinqToDB.DataType.Int32),
+				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar),
+				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.Text),
+				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar),
+				new DataParameter("@fechaLanzamiento", @fechaLanzamiento, LinqToDB.DataType.Date),
+				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar),
+				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar),
+				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar),
+				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar),
+				new DataParameter("@estado",           @estado,           LinqToDB.DataType.Char)
+			};
+
+			return dataConnection.ExecuteProc("[dbo].[sp_ActualizarVideojuego]", parameters);
+		}
+
+		#endregion
+
+		#region SpEliminarVideojuego
+
+		public static int SpEliminarVideojuego(this RentaVideojuegosDB dataConnection, int? @idVideojuego)
+		{
+			var parameters = new []
+			{
+				new DataParameter("@idVideojuego", @idVideojuego, LinqToDB.DataType.Int32)
+			};
+
+			return dataConnection.ExecuteProc("[dbo].[sp_EliminarVideojuego]", parameters);
+		}
+
+		#endregion
+
+		#region SpInsertarVideojuego
+
+		public static int SpInsertarVideojuego(this RentaVideojuegosDB dataConnection, int? @idSucursal, string @titulo, string @descripcion, string @idCategoria, DateTime? @fechaLanzamiento, string @desarrolladora, string @distribuidora, string @imagen, string @trailer)
+		{
+			var parameters = new []
+			{
+				new DataParameter("@idSucursal",       @idSucursal,       LinqToDB.DataType.Int32),
+				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar),
+				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.Text),
+				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar),
+				new DataParameter("@fechaLanzamiento", @fechaLanzamiento, LinqToDB.DataType.Date),
+				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar),
+				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar),
+				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar),
+				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar)
+			};
+
+			return dataConnection.ExecuteProc("[dbo].[sp_InsertarVideojuego]", parameters);
+		}
+
+		#endregion
+
+		#region SpListarVideojuegos
+
+		public static IEnumerable<Videojuego> SpListarVideojuegos(this RentaVideojuegosDB dataConnection)
+		{
+			return dataConnection.QueryProc<Videojuego>("[dbo].[sp_ListarVideojuegos]");
+		}
 
 		#endregion
 	}

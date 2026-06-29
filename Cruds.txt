@@ -1,0 +1,93 @@
+USE RentaVideojuegos;
+GO
+
+-- RNF-003: Procedimiento almacenado para eliminar permanentemente un videojuego del catálogo
+CREATE PROCEDURE sp_EliminarVideojuego
+    @idVideojuego INT
+AS
+BEGIN
+    DELETE FROM Videojuego
+    WHERE idVideojuego = @idVideojuego;
+END
+GO
+
+
+///////////////////////////////////////////////////////////////////////////
+USE RentaVideojuegos;
+GO
+
+-- RNF-003: Procedimiento almacenado para actualizar la información de un videojuego existente
+CREATE PROCEDURE sp_ActualizarVideojuego
+    @idVideojuego INT,
+    @idSucursal INT,
+    @titulo VARCHAR(100),
+    @descripcion TEXT,
+    @idCategoria VARCHAR(100),
+    @fechaLanzamiento DATE,
+    @desarrolladora VARCHAR(100),
+    @distribuidora VARCHAR(100),
+    @imagen VARCHAR(255),
+    @trailer VARCHAR(255),
+    @estado CHAR(1)
+AS
+BEGIN
+    UPDATE Videojuego
+    SET idSucursal = @idSucursal,
+        titulo = @titulo,
+        descripcion = @descripcion,
+        idCategoria = @idCategoria,
+        fechaLanzamiento = @fechaLanzamiento,
+        desarrolladora = @desarrolladora,
+        distribuidora = @distribuidora,
+        imagen = @imagen,
+        trailer = @trailer,
+        estado = @estado
+    WHERE idVideojuego = @idVideojuego;
+END
+GO
+
+//////////////////////////////////////////////////////////////////
+USE RentaVideojuegos;
+GO
+
+-- RNF-003: Procedimiento almacenado para obtener la lista completa de videojuegos activos
+CREATE PROCEDURE sp_ListarVideojuegos
+AS
+BEGIN
+    SELECT 
+        idVideojuego,
+        idSucursal,
+        titulo,
+        descripcion,
+        idCategoria,
+        fechaLanzamiento,
+        desarrolladora,
+        distribuidora,
+        imagen,
+        trailer,
+        estado
+    FROM Videojuego;
+END
+GO
+
+////////////////////////////////////////////////////////////////////
+
+USE RentaVideojuegos;
+GO
+
+ALTER PROCEDURE sp_InsertarVideojuego
+    @idSucursal INT,
+    @titulo VARCHAR(100),
+    @descripcion TEXT,
+    @idCategoria VARCHAR(100),
+    @fechaLanzamiento DATE,
+    @desarrolladora VARCHAR(100),
+    @distribuidora VARCHAR(100),
+    @imagen VARCHAR(255),
+    @trailer VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO Videojuego (idSucursal, titulo, descripcion, idCategoria, fechaLanzamiento, desarrolladora, distribuidora, imagen, trailer, estado)
+    VALUES (@idSucursal, @titulo, @descripcion, @idCategoria, @fechaLanzamiento, @desarrolladora, @distribuidora, @imagen, @trailer, 'A');
+END
+GO
