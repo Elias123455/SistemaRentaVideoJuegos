@@ -15,24 +15,6 @@ namespace RentaVideojuegos
     {
 
         /// <summary>
-        /// Control navGestionarAlquileres.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navGestionarAlquileres;
-
-        /// <summary>
-        /// Control navGestionarVideojuegos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navGestionarVideojuegos;
-
-        /// <summary>
         /// Control litNombreUsuario.
         /// </summary>
         /// <remarks>

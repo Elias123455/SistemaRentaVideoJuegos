@@ -11,16 +11,16 @@ namespace RentaVideojuegos.Pages
 {
 
 
-    public partial class Alquileres
+    public partial class CatalogoJuegos
     {
 
         /// <summary>
-        /// Control gvAlquileres.
+        /// Control rptCatalogo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAlquileres;
+        protected global::System.Web.UI.WebControls.Repeater rptCatalogo;
     }
 }
