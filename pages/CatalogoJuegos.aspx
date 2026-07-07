@@ -42,11 +42,13 @@
                 <ItemTemplate>
                     <div class="tarjeta-juego">
                         <div>
-                            <img class="imagen-portada" src='<%# ResolveUrl("~/images/portadas/" + Eval("imagen")) %>' alt="Portada" />
-                            <div class="titulo-juego"><%# Eval("titulo") %></div>
-                            <div class="info-juego"><strong>Desarrollador:</strong> <%# Eval("desarrolladora") %></div>
+                            <asp:Image ID="imgPortada" runat="server" CssClass="imagen-portada" 
+                                ImageUrl='<%# "~/images/portadas/" + (Eval("Imagen") != null && !string.IsNullOrEmpty(Eval("Imagen").ToString()) ? System.IO.Path.GetFileName(Eval("Imagen").ToString()) : "default.png") %>' />
+                            
+                            <div class="titulo-juego"><%# Eval("Titulo") %></div>
+                            <div class="info-juego"><strong>Desarrollador:</strong> <%# Eval("Desarrolladora") %></div>
                         </div>
-                        <asp:Button ID="btnAlquilar" runat="server" Text="RENTAR JUEGO" CssClass="btn-rentar" CommandArgument='<%# Eval("idVideojuego") %>' OnClick="btnAlquilar_Click" />
+                        <asp:Button ID="btnAlquilar" runat="server" Text="RENTAR JUEGO" CssClass="btn-rentar" CommandArgument='<%# Eval("IdVideojuego") %>' OnClick="btnAlquilar_Click" />
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

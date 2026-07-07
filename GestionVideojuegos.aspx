@@ -16,7 +16,7 @@
         .grid-minimalista { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .grid-minimalista th { background-color: #111827; color: #ffffff; padding: 15px; text-align: left; }
         
-        /* AQUÍ ESTÁ LA CORRECCIÓN: Forzamos el texto a gris muy oscuro para que no se pierda con el fondo blanco */
+     
         .grid-minimalista td { padding: 15px; border-bottom: 1px solid #e5e7eb; vertical-align: middle; color: #111827 !important; } 
         
         .error-texto { color: #dc2626; font-size: 12px; font-weight: bold; display: block; margin-top: 5px; }

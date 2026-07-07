@@ -1,0 +1,22 @@
+USE RentaVideojuegos;
+
+
+UPDATE Videojuego SET imagen = 're1.jpg' WHERE titulo = 'God of War Ragnarok';
+UPDATE Videojuego SET imagen = 're2.jpg' WHERE titulo = 'Elden Ring';
+UPDATE Videojuego SET imagen = 're3.jpg' WHERE titulo = 'FIFA 24';
+UPDATE Videojuego SET imagen = 're4.jpg' WHERE titulo = 'Red Dead Redemption 2';
+UPDATE Videojuego SET imagen = 're5.jpg' WHERE titulo = 'The Legend of Zelda Tears of the Kingdom';
+UPDATE Videojuego SET imagen = 're6.jpg' WHERE titulo = 'Hogwarts Legacy';
+UPDATE Videojuego SET imagen = 're7.jpg' WHERE titulo = 'Mortal Kombat 1';
+UPDATE Videojuego SET imagen = 're8.jpg' WHERE titulo = 'Cyberpunk 2077';
+UPDATE Videojuego SET imagen = 're9.jpg' WHERE titulo = 'Spider-Man 2';
+UPDATE Videojuego SET imagen = 're10.jpg' WHERE titulo = 'Street Fighter 6';
+UPDATE Videojuego SET imagen = 're11.jpg' WHERE titulo = 'Starfield';
+UPDATE Videojuego SET imagen = 're12.jpg' WHERE titulo = 'Resident Evil 4 Remake';
+UPDATE Videojuego SET imagen = 're13.jpg' WHERE titulo = 'Call of Duty Modern Warfare III';
+UPDATE Videojuego SET imagen = 're14.jpg' WHERE titulo = 'Diablo IV';
+UPDATE Videojuego SET imagen = 're15.jpg' WHERE titulo = 'Forza Motorsport';
+UPDATE Videojuego SET imagen = 're16.jpg' WHERE titulo = 'Gran Turismo 7';
+
+
+SELECT titulo, imagen FROM Videojuego;
