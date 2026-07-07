@@ -17,7 +17,7 @@ namespace RentaVideojuegos.Pages
 
         private void CargarCatalogo()
         {
-            using (var db = new RentaVideojuegosDB("RentaBD"))
+            using (var db = new RentaVideojuegosDB("MyDatabase"))
             {
                 try
                 {

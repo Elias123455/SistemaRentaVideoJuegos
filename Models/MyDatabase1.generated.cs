@@ -22,8 +22,8 @@ namespace DataModels
 {
 	/// <summary>
 	/// Database       : RentaVideojuegos
-	/// Data Source    : (localdb)\MSSQLLocalDB
-	/// Server Version : 17.00.4025
+	/// Data Source    : localhost\SQLExpress
+	/// Server Version : 16.00.1000
 	/// </summary>
 	public partial class RentaVideojuegosDB : LinqToDB.Data.DataConnection
 	{
@@ -226,15 +226,15 @@ namespace DataModels
 			{
 				new DataParameter("@idVideojuego",     @idVideojuego,     LinqToDB.DataType.Int32),
 				new DataParameter("@idSucursal",       @idSucursal,       LinqToDB.DataType.Int32),
-				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar),
-				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.Text),
-				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar),
+				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.VarChar, -1),
+				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar, 100),
 				new DataParameter("@fechaLanzamiento", @fechaLanzamiento, LinqToDB.DataType.Date),
-				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar),
-				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar),
-				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar),
-				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar),
-				new DataParameter("@estado",           @estado,           LinqToDB.DataType.Char)
+				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar, 255),
+				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar, 255),
+				new DataParameter("@estado",           @estado,           LinqToDB.DataType.Char, 1)
 			};
 
 			return dataConnection.ExecuteProc("[dbo].[sp_ActualizarVideojuego]", parameters);
@@ -256,6 +256,23 @@ namespace DataModels
 
 		#endregion
 
+		#region SpInsertarJugador
+
+		public static int SpInsertarJugador(this RentaVideojuegosDB dataConnection, string @nombreCompleto, string @email, string @clave, bool? @esAdministrador)
+		{
+			var parameters = new []
+			{
+				new DataParameter("@nombreCompleto",  @nombreCompleto,  LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@email",           @email,           LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@clave",           @clave,           LinqToDB.DataType.VarChar, 255),
+				new DataParameter("@esAdministrador", @esAdministrador, LinqToDB.DataType.Boolean)
+			};
+
+			return dataConnection.ExecuteProc("[dbo].[sp_InsertarJugador]", parameters);
+		}
+
+		#endregion
+
 		#region SpInsertarVideojuego
 
 		public static int SpInsertarVideojuego(this RentaVideojuegosDB dataConnection, int? @idSucursal, string @titulo, string @descripcion, string @idCategoria, DateTime? @fechaLanzamiento, string @desarrolladora, string @distribuidora, string @imagen, string @trailer)
@@ -263,14 +280,14 @@ namespace DataModels
 			var parameters = new []
 			{
 				new DataParameter("@idSucursal",       @idSucursal,       LinqToDB.DataType.Int32),
-				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar),
-				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.Text),
-				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar),
+				new DataParameter("@titulo",           @titulo,           LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@descripcion",      @descripcion,      LinqToDB.DataType.Text, 2147483647),
+				new DataParameter("@idCategoria",      @idCategoria,      LinqToDB.DataType.VarChar, 100),
 				new DataParameter("@fechaLanzamiento", @fechaLanzamiento, LinqToDB.DataType.Date),
-				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar),
-				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar),
-				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar),
-				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar)
+				new DataParameter("@desarrolladora",   @desarrolladora,   LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@distribuidora",    @distribuidora,    LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@imagen",           @imagen,           LinqToDB.DataType.VarChar, 255),
+				new DataParameter("@trailer",          @trailer,          LinqToDB.DataType.VarChar, 255)
 			};
 
 			return dataConnection.ExecuteProc("[dbo].[sp_InsertarVideojuego]", parameters);
@@ -283,6 +300,28 @@ namespace DataModels
 		public static IEnumerable<Videojuego> SpListarVideojuegos(this RentaVideojuegosDB dataConnection)
 		{
 			return dataConnection.QueryProc<Videojuego>("[dbo].[sp_ListarVideojuegos]");
+		}
+
+		#endregion
+
+		#region SpValidarJugador
+
+		public static IEnumerable<SpValidarJugadorResult> SpValidarJugador(this RentaVideojuegosDB dataConnection, string @email, string @clave)
+		{
+			var parameters = new []
+			{
+				new DataParameter("@email", @email, LinqToDB.DataType.VarChar, 100),
+				new DataParameter("@clave", @clave, LinqToDB.DataType.VarChar, 255)
+			};
+
+			return dataConnection.QueryProc<SpValidarJugadorResult>("[dbo].[sp_ValidarJugador]", parameters);
+		}
+
+		public partial class SpValidarJugadorResult
+		{
+			public int    IdJugador       { get; set; }
+			public string NombreCompleto  { get; set; }
+			public bool   EsAdministrador { get; set; }
 		}
 
 		#endregion

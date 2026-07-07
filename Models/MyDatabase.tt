@@ -24,7 +24,7 @@ GetSchemaOptions.GetProcedures = true;
 
 	// Loading metadata
 	//
-LoadSqlServerMetadata("(localdb)\\MSSQLLocalDB", "RentaVideojuegos");
+LoadSqlServerMetadata("localhost\\SQLExpress", "RentaVideojuegos");
 
 	// Customizing generation process
 	//

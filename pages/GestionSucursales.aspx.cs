@@ -17,7 +17,7 @@ namespace RentaVideojuegos.Pages
 
         private void CargarSucursales()
         {
-            using (var db = new RentaVideojuegosDB("RentaBD"))
+            using (var db = new RentaVideojuegosDB("MyDatabase"))
             {
                 try
                 {
@@ -33,7 +33,7 @@ namespace RentaVideojuegos.Pages
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            using (var db = new RentaVideojuegosDB("RentaBD"))
+            using (var db = new RentaVideojuegosDB("MyDatabase"))
             {
                 db.GetTable<Sucursal>()
                   .Insert(() => new Sucursal

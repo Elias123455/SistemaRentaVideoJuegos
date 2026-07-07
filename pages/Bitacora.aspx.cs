@@ -18,7 +18,7 @@ namespace RentaVideojuegos.Pages
 
         private void CargarBitacora()
         {
-            using (var db = new RentaVideojuegosDB("RentaBD"))
+            using (var db = new RentaVideojuegosDB("MyDatabase"))
             {
                 try
                 {
