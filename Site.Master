@@ -24,20 +24,23 @@
 
         <nav class="navbar navbar-expand-lg navbar-ps mb-4">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/Inicio.aspx">PSRenta</a>
+                <a class="navbar-brand" runat="server" href="~/Pages/CatalogoJuegos.aspx">PSRenta</a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav flex-grow-1">
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/Inicio.aspx">Inicio</a></li>
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/GestionVideojuegos.aspx">Gestión Videojuegos</a></li>
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/GestionSucursales.aspx">Sucursales</a></li>
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/CatalogoJuegos.aspx">Catálogo</a></li>
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Alquileres.aspx">Mis Alquileres</a></li>
-    <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Bitacora.aspx">Bitácora</a></li>
-</ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><span class="nav-link text-light">Hola, <asp:Literal ID="litNombreUsuario" runat="server" Text="Invitado"></asp:Literal></span></li>
-                        <li class="nav-item"><asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="nav-link text-danger" OnClick="btnCerrarSesion_Click">Cerrar sesión</asp:LinkButton></li>
+                        <li class="nav-item" id="menuVideojuegos" runat="server"><a class="nav-link" href="~/GestionVideojuegos.aspx" runat="server">Gestión Videojuegos</a></li>
+                        <li class="nav-item" id="menuSucursales" runat="server"><a class="nav-link" href="~/Pages/GestionSucursales.aspx" runat="server">Gestión Sucursales</a></li>
+                        <li class="nav-item" id="menuCatalogo" runat="server"><a class="nav-link" href="~/Pages/CatalogoJuegos.aspx" runat="server">Catálogo</a></li>
+                        <li class="nav-item" id="menuAlquileres" runat="server"><a class="nav-link" href="~/Pages/Alquileres.aspx" runat="server">Mis Alquileres</a></li>
+                        <li class="nav-item" id="menuBitacora" runat="server"><a class="nav-link" href="~/Pages/Bitacora.aspx" runat="server">Bitácora</a></li>
                     </ul>
+                    <ul class="navbar-nav">
+    <li class="nav-item">
+        <span class="nav-link text-light">Hola, <asp:Literal ID="litNombreUsuario" runat="server" Text="Invitado"></asp:Literal></span>
+    </li>
+    <li class="nav-item">
+        <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="nav-link text-danger" OnClick="btnCerrarSesion_Click" CausesValidation="false">Cerrar sesión</asp:LinkButton>
+    </li>
+</ul>
                 </div>
             </div>
         </nav>

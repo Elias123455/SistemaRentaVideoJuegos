@@ -38,7 +38,7 @@
         <p style="color: #6b7280; margin-bottom: 25px;">Selecciona tu próximo videojuego y recógelo en tu sucursal favorita.</p>
 
         <div class="contenedor-galeria">
-            <asp:Repeater ID="rptCatalogo" runat="server">
+            <asp:Repeater ID="rptCatalogo" runat="server" OnItemDataBound="rptCatalogo_ItemDataBound">
                 <ItemTemplate>
                     <div class="tarjeta-juego">
                         <div>
