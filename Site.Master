@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item" id="menuVideojuegos" runat="server"><a class="nav-link" href="~/GestionVideojuegos.aspx" runat="server">Gestión Videojuegos</a></li>
-                        <li class="nav-item" id="menuSucursales" runat="server"><a class="nav-link" href="~/Pages/GestionSucursales.aspx" runat="server">Gestión Sucursales</a></li>
+                        <li class="nav-item" id="menuGestionAlquileres" runat="server"><a class="nav-link" href="~/Pages/GestionAlquileres.aspx" runat="server">Gestión Alquileres</a></li>
                         <li class="nav-item" id="menuCatalogo" runat="server"><a class="nav-link" href="~/Pages/CatalogoJuegos.aspx" runat="server">Catálogo</a></li>
                         <li class="nav-item" id="menuAlquileres" runat="server"><a class="nav-link" href="~/Pages/Alquileres.aspx" runat="server">Mis Alquileres</a></li>
                         <li class="nav-item" id="menuBitacora" runat="server"><a class="nav-link" href="~/Pages/Bitacora.aspx" runat="server">Bitácora</a></li>

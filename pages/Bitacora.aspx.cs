@@ -5,7 +5,7 @@ using LinqToDB;
 
 namespace RentaVideojuegos.Pages
 {
-    // Cambiamos el nombre a BitacoraPage para que no choque con la tabla Bitacora
+    
     public partial class BitacoraPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -22,10 +22,32 @@ namespace RentaVideojuegos.Pages
             {
                 try
                 {
-                    // Usamos la propiedad REAL: FechaDeLaAccion
-                    gvBitacora.DataSource = db.GetTable<DataModels.Bitacora>()
-                                              .OrderByDescending(b => b.FechaDeLaAccion)
-                                              .ToList();
+                    var consulta = from b in db.GetTable<DataModels.Bitacora>()
+                                       
+                                   join j in db.GetTable<Jugador>() on b.IdJugador equals j.IdJugador
+
+                                   
+                                   join a in db.GetTable<Alquiler>() on b.IdAlquiler equals a.IdAlquiler into aj
+                                   from a in aj.DefaultIfEmpty()
+
+                                       
+                                   join v in db.GetTable<Videojuego>() on (a != null ? a.IdVideojuego : 0) equals v.IdVideojuego into vj
+                                   from v in vj.DefaultIfEmpty()
+
+                                   orderby b.FechaDeLaAccion descending
+                                   select new
+                                   {
+                                       IdBitacora = b.IdBitacora,
+
+                                      
+                                       IdJugador = j.NombreCompleto,
+
+                                       AccionRealizada = b.AccionRealizada,
+                                       FechaDeLaAccion = b.FechaDeLaAccion,
+                                       IdAlquiler = v != null ? v.Titulo : "N/A"
+                                   };
+
+                    gvBitacora.DataSource = consulta.ToList();
                     gvBitacora.DataBind();
                 }
                 catch (Exception ex)

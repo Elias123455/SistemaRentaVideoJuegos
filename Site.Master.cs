@@ -19,20 +19,20 @@ namespace RentaVideojuegos
 
                 if (rol == "Admin")
                 {
-                    // vista admin
+                    
                     menuVideojuegos.Visible = true;
-                    menuSucursales.Visible = true;
+                    menuGestionAlquileres.Visible = true;
                     menuBitacora.Visible = true;
                     menuCatalogo.Visible = true;
                     menuAlquileres.Visible = false;
                 }
                 else if (rol == "Jugador")
                 {
-                    // vista jugador
+                    
                     menuCatalogo.Visible = true;
                     menuAlquileres.Visible = true;
                     menuVideojuegos.Visible = false;
-                    menuSucursales.Visible = false;
+                    menuGestionAlquileres.Visible = false;
                     menuBitacora.Visible = false;
                 }
             }
@@ -41,8 +41,8 @@ namespace RentaVideojuegos
                 // Si alguien intenta entrar a las páginas sin iniciar sesión, 
 
                 menuVideojuegos.Visible = false;
-                menuSucursales.Visible = false;
-                menuBitacora.Visible = false;
+                    menuGestionAlquileres.Visible = false;
+                    menuBitacora.Visible = false;
                 menuAlquileres.Visible = false;
             }
            }

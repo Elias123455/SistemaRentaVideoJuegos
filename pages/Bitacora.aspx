@@ -20,7 +20,7 @@
             <asp:GridView ID="gvBitacora" runat="server" AutoGenerateColumns="False" EmptyDataText="No se registran eventos en la bitácora actualmente." CssClass="grid-minimalista" GridLines="None">
                 <Columns>
                     <asp:BoundField DataField="IdBitacora" HeaderText="ID Evento" />
-                    <asp:BoundField DataField="IdJugador" HeaderText="ID Jugador" />
+                    <asp:BoundField DataField="IdJugador" HeaderText="Jugador" />
                     <asp:BoundField DataField="AccionRealizada" HeaderText="Acción Realizada" />
                     <asp:BoundField DataField="FechaDeLaAccion" HeaderText="Fecha y Hora" DataFormatString="{0:dd/MM/yyyy HH:mm:ss}" />
                     <asp:BoundField DataField="IdAlquiler" HeaderText="ID Alquiler" />

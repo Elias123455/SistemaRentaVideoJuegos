@@ -13,7 +13,13 @@
         .btn { width: 100%; background-color: #2563eb; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
         .btn:hover { background-color: #1d4ed8; }
         .error { color: red; display: block; margin-top: 10px; text-align: center; }
+        #pantallaCarga { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); z-index: 9999; text-align: center; padding-top: 20%; }
     </style>
+    <script type="text/javascript">
+        function mostrarCarga() {
+            document.getElementById('pantallaCarga').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,12 +30,19 @@
             <label>Clave</label>
             <asp:TextBox ID="txtClave" runat="server" TextMode="Password" CssClass="txt"></asp:TextBox>
             
-            <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn" OnClick="btnIngresar_Click" />
-            
+           <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn" 
+    OnClick="btnIngresar_Click" 
+    OnClientClick="this.disabled=true; this.value='Cargando...';" 
+    UseSubmitBehavior="false" />
             <asp:Label ID="lblError" runat="server" CssClass="error" />
             <br />
             <a href="Registrarse.aspx" style="color: #3b82f6; text-align: center; display: block;">¿No tienes cuenta? Registrarse</a>
         </div>
+
+        <div id="pantallaCarga">
+    <img src="/images/login.png" alt="Cargando..." width="100" />
+    <h3 style="color: #111827; margin-top: 15px;">Cargando perfil...</h3>
+</div>
     </form>
 </body>
 </html>

@@ -15,35 +15,43 @@ namespace RentaVideojuegos.pages
         {
             try
             {
-             
                 string correo = txtEmail.Text.Trim();
                 string contrasena = txtClave.Text.Trim();
 
                 using (RentaVideojuegosDB db = new RentaVideojuegosDB("RentaBD"))
                 {
-                    
-                    var resultado = db.Jugadors.FirstOrDefault(j => j.Email == correo && j.Clave == contrasena && j.Estado == 'A');
+                    // Usamos 'A' (char) y unificamos la lógica en una sola consulta
+                    var jugador = db.Jugadors.FirstOrDefault(j => j.Email == correo && j.Clave == contrasena && j.Estado == 'A');
 
-                    if (resultado != null)
+                    if (jugador != null)
                     {
-                        Session["IdJugador"] = resultado.IdJugador;
-                        Session["NombreCompleto"] = resultado.NombreCompleto;
-                        Session["EsAdministrador"] = resultado.EsAdministrador;
-                        Session["Rol"] = resultado.EsAdministrador ? "Admin" : "Jugador";
+                        Session["IdJugador"] = jugador.IdJugador;
+                        Session["NombreCompleto"] = jugador.NombreCompleto;
+                        Session["EsAdministrador"] = jugador.EsAdministrador;
+                        Session["Rol"] = jugador.EsAdministrador ? "Admin" : "Jugador";
 
                         Response.Redirect("~/Pages/CatalogoJuegos.aspx");
                     }
                     else
                     {
-                        
                         lblError.Text = "Correo o contraseña incorrectos, o cuenta inactiva.";
+
+                        // IMPORTANTE: Para que la pantalla de carga se quite si el login falla,
+                        // debemos ocultarla manualmente mediante JavaScript:
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ocultarCarga",
+                            "document.getElementById('pantallaCarga').style.display = 'none';", true);
                     }
                 }
             }
             catch (Exception ex)
             {
                 lblError.Text = "Ocurrió un error: " + ex.Message;
+
+                // Ocultar carga en caso de error
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ocultarCarga",
+                    "document.getElementById('pantallaCarga').style.display = 'none';", true);
             }
         }
+
     }
 }

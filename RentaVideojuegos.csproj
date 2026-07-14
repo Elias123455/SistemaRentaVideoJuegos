@@ -129,6 +129,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="pages\GestionAlquileres.aspx" />
     <Content Include="pages\IniciarSesion.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="GestionVideojuegos.aspx" />
@@ -141,7 +142,7 @@
     <Content Include="pages\Alquileres.aspx" />
     <Content Include="pages\Bitacora.aspx" />
     <Content Include="pages\CatalogoJuegos.aspx" />
-    <Content Include="pages\GestionSucursales.aspx" />
+    <Content Include="pages\ModificarAlquiler.aspx" />
     <Content Include="pages\Registrarse.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -226,6 +227,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="pages\GestionAlquileres.aspx.cs">
+      <DependentUpon>GestionAlquileres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\GestionAlquileres.aspx.designer.cs">
+      <DependentUpon>GestionAlquileres.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -274,12 +282,12 @@
     <Compile Include="pages\CatalogoJuegos.aspx.designer.cs">
       <DependentUpon>CatalogoJuegos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\GestionSucursales.aspx.cs">
-      <DependentUpon>GestionSucursales.aspx</DependentUpon>
+    <Compile Include="pages\ModificarAlquiler.aspx.cs">
+      <DependentUpon>ModificarAlquiler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\GestionSucursales.aspx.designer.cs">
-      <DependentUpon>GestionSucursales.aspx</DependentUpon>
+    <Compile Include="pages\ModificarAlquiler.aspx.designer.cs">
+      <DependentUpon>ModificarAlquiler.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Registrarse.aspx.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
